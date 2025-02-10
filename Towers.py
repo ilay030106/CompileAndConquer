@@ -62,6 +62,7 @@ class Queue(Tower):
     def __init__(self, x, y, image):
         super().__init__(x, y, image, 50, "queue_projectile", 1000, 500, "first")
         self.mag = sprite.LayeredDirty()
+        self.mage_size=10
         self.reload()
 
     def reload(self, size=7):
