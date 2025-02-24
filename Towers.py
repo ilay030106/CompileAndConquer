@@ -1,5 +1,5 @@
 from pygame import sprite, time
-
+from Projectiles import *
 class Tower(sprite.DirtySprite):
     def __init__(self, x, y, image, range_rad, projectile, attack_speed, price, targeting="first"):
         super().__init__()
@@ -50,22 +50,40 @@ class Stack(Tower):
             time.wait(self.reload_time)
             self.reload()
 
+
 class Queue(Tower):
     def __init__(self, x, y, image):
-        super().__init__(x, y, image, 50, "queue_projectile", 1000, 500)
-        self.mag = sprite.LayeredDirty()
-        self.mag_size = 10
-        self.reload()
+        # Create base projectile for the queue tower
+        base_projectile = Queue_Projectile("base_QueueProjImg", 10, None)  # Placeholder image and damage
+        super().__init__(x, y, image, 50, base_projectile, 1000, 500)
+        self.mag = sprite.LayeredDirty()  # Magazine to hold projectiles
+        self.mag_size = 10  # Size of the magazine
         self.reload_time = 1200
+        self.reload()
 
     def reload(self):
+        self.mag.empty()  # Clear the magazine before reloading
         for _ in range(self.mag_size):
-            pass
+            # Create new Queue_Projectile instances for the magazine
+            new_proj = Queue_Projectile("queue_proj_img", 10, None)  # Placeholder image and damage
+            self.mag.add(new_proj)
 
     def attack(self, enemy):
-        super().attack(enemy)
-        if len(self.mag) > 0:
-            self.mag.remove(self.mag.sprites()[0])
-        else:
-            time.wait(self.reload_time)
-            self.reload()
+        now = time.get_ticks()
+        if now - self.last_attack >= self.attack_speed and self.in_range(enemy):
+            if len(self.mag) > 0:
+                # Fire projectile from the magazine
+                projectile = self.mag.sprites()[0]
+                projectile.target = enemy  # Assign the enemy as the target
+                projectile.pos_x = self.rect.centerx
+                projectile.pos_y = self.rect.centery
+                projectile.rect.center = (self.rect.centerx, self.rect.centery)
+
+                # Add projectile to game world (you'll need to add it to a sprite group in the main loop)
+                self.mag.remove(projectile)  # Remove from magazine after firing
+
+                self.last_attack = now
+            else:
+                # If magazine is empty, reload
+                time.wait(self.reload_time)
+                self.reload()
