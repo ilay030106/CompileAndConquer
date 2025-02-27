@@ -2,7 +2,7 @@ import pygame as pg
 from pygame.math import Vector2
 import math
 import constants as c
-from enemy_data import ENEMY_DATA
+from .enemy_upgrade_data import ENEMY_DATA
 
 class Enemy(pg.sprite.Sprite):
   def __init__(self, enemy_type, waypoints, images):

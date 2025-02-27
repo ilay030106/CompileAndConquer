@@ -1,7 +1,7 @@
 import pygame as pg
 import math
 import constants as c
-from turret_data import TURRET_DATA
+from .turret_upgrades_data import TURRET_DATA
 
 class Turret(pg.sprite.Sprite):
   def __init__(self, sprite_sheets, tile_x, tile_y, shot_fx):

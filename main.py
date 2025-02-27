@@ -1,8 +1,8 @@
 import pygame as pg
 import json
-from enemy import Enemy
+from enemy.enemy import Enemy
 from world import World
-from turret import Turret
+from towers.turret import Turret
 from button import Button
 import constants as c
 

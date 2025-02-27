@@ -1,7 +1,6 @@
-import pygame as pg
 import random
 import constants as c
-from enemy_data import ENEMY_SPAWN_DATA
+from enemy.enemy_upgrade_data import ENEMY_SPAWN_DATA
 
 class World():
   def __init__(self, data, map_image):
