@@ -12,6 +12,7 @@ class Turret(pg.sprite.Sprite):
     self.last_shot = pg.time.get_ticks()
     self.selected = False
     self.target = None
+    self.kills=0
 
     #position variables
     self.tile_x = tile_x
