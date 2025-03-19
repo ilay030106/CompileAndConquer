@@ -14,28 +14,39 @@ class SettingsMenu:
         self.settings_window.geometry("400x400")
         self.settings_window.protocol("WM_DELETE_WINDOW", self.unpause_game)  # Bind window close event
 
-
         # Unpause button
-        unpause_button = ct.CTkButton(self.settings_window, text="Unpause", command=self.unpause_game, width=200, height=50, font=("Arial", 16))
+        unpause_button = ct.CTkButton(
+            self.settings_window, text="Unpause", command=self.unpause_game, width=200, height=50, font=("Arial", 16)
+        )
         unpause_button.pack(pady=20)
 
         # Music volume slider
-        self.volume_label = ct.CTkLabel(self.settings_window, text=f"Volume: {int(pg.mixer.music.get_volume() * 100)}", font=("Arial", 16))
+        self.volume_label = ct.CTkLabel(
+            self.settings_window, text=f"Volume: {int(pg.mixer.music.get_volume() * 100)}", font=("Arial", 16)
+        )
         self.volume_label.pack(pady=10)
-        music_volume_slider = ct.CTkSlider(self.settings_window, from_=0, to=100, command=self.adjust_music_volume, width=200)
+        music_volume_slider = ct.CTkSlider(
+            self.settings_window, from_=0, to=100, command=self.adjust_music_volume, width=200
+        )
         music_volume_slider.set(pg.mixer.music.get_volume() * 100)
         music_volume_slider.pack(pady=20)
 
         # Exit to main menu button
-        exit_button = ct.CTkButton(self.settings_window, text="Exit to Main Menu", command=self.exit_to_main_menu, width=200, height=50, font=("Arial", 16))
+        exit_button = ct.CTkButton(
+            self.settings_window, text="Exit to Main Menu", command=self.exit_to_main_menu, width=200, height=50, font=("Arial", 16)
+        )
         exit_button.pack(pady=20)
 
         # Restart button
-        restart_button = ct.CTkButton(self.settings_window, text="Restart", command=self.restart_game, width=200, height=50, font=("Arial", 16))
+        restart_button = ct.CTkButton(
+            self.settings_window, text="Restart", command=self.restart_game, width=200, height=50, font=("Arial", 16)
+        )
         restart_button.pack(pady=20)
 
         # Auto-start switch
-        auto_start_switch = ct.CTkSwitch(self.settings_window, text="Auto Start", command=self.toggle_auto_start, width=200, font=("Arial", 16))
+        auto_start_switch = ct.CTkSwitch(
+            self.settings_window, text="Auto Start", command=self.toggle_auto_start, width=200, font=("Arial", 16)
+        )
         auto_start_switch.pack(pady=20)
 
     def unpause_game(self):
