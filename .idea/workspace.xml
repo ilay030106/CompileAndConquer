@@ -5,44 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b760314-79ca-475b-b123-64d47418932c" name="Changes" comment="synced project with other files">
-      <change afterPath="$PROJECT_DIR$/notification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CompileAndConquer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CompileAndConquer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db_connection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/audio/shot.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/buttons/begin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/buttons/buy_turret.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/buttons/cancel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/buttons/fast_forward.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/buttons/restart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/buttons/upgrade_turret.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/enemies/enemy_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/enemies/enemy_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/enemies/enemy_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/enemies/enemy_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/gui/coin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/gui/heart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/gui/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tiles/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/turrets/cursor_turret.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/turrets/turret_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/turrets/turret_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/turrets/turret_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/turrets/turret_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings_menu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menus/start_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menus/start_menu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +33,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ilay030106/CompileAndConquer.git&quot;,
-    &quot;accountId&quot;: &quot;068b0f78-7c8f-46d4-a036-f56672f57293&quot;
+    &quot;accountId&quot;: &quot;3b614e45-d83c-43fb-b294-f2e5e69255ff&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -87,11 +52,14 @@
   "keyToString": {
     "Python.enemy.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.settings_menu.executor": "Run",
+    "Python.start_menu.executor": "Run",
     "Python.turret.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/ILAY_N/Downloads/New python version - with start_menu-20250319T083332Z-001/New python version - with start_menu",
+    "last_opened_file_path": "C:/Users/O/PycharmProjects/CompileAndConquer/db_connection.py",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,11 +67,15 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Programming\ProgrammingOrt\Python\CompileAndConquer" />
       <recent name="C:\Programming\ProgrammingOrt\Python\CompileAndConquer\towers" />
       <recent name="C:\Programming\ProgrammingOrt\Python\CompileAndConquer\enemy" />
     </key>
@@ -128,6 +100,7 @@
       <workItem from="1740398936442" duration="3170000" />
       <workItem from="1740639262798" duration="861000" />
       <workItem from="1740640154788" duration="295000" />
+      <workItem from="1741799820696" duration="3543000" />
     </task>
     <task id="LOCAL‎-00003" summary="Started working on the Projectiles.py module, need to add more towers and more Projectiles.py">
       <option name="closed" value="true" />
@@ -159,7 +132,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CompileAndConquer$enemy.coverage" NAME="enemy Coverage Results" MODIFIED="1740640120327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enemy" />
-    <SUITE FILE_PATH="coverage/CompileAndConquer$main.coverage" NAME="main Coverage Results" MODIFIED="1742372993782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CompileAndConquer$settings_menu.coverage" NAME="settings_menu Coverage Results" MODIFIED="1741803005207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CompileAndConquer$start_menu.coverage" NAME="start_menu Coverage Results" MODIFIED="1742389219075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Menus" />
+    <SUITE FILE_PATH="coverage/CompileAndConquer$main.coverage" NAME="main Coverage Results" MODIFIED="1741803415502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CompileAndConquer$turret.coverage" NAME="turret Coverage Results" MODIFIED="1740639889666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/towers" />
   </component>
 </project>

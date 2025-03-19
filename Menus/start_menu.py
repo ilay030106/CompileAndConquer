@@ -1,8 +1,19 @@
+import mysql.connector
+from mysql.connector import Error
+from mysql.connector.pooling import MySQLConnectionPool
 import pygame as pg
 import sys
 import os
-import constants as c
 import subprocess
+import re
+
+# Import tkinter and customtkinter for modal forms.
+import tkinter as tk
+import customtkinter as ctk
+from tkinter import messagebox
+from tkinter import ttk
+import constants as c
+from db_connection import initialize_database, get_db_connection, close_database
 
 # Initialize pygame
 pg.init()
@@ -16,14 +27,15 @@ RED = c.RED
 FONT = pg.font.Font(None, 36)
 
 # Load background image
-background_image = pg.image.load(
-    r"C:\Programming\ProgrammingOrt\Python\CompileAndConquer\assets\images\Sabrina\Short n Sweet - covers.png")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+assets_dir = os.path.join(script_dir, '..', 'assets', 'images', 'Sabrina')
+background_image_path = os.path.join(assets_dir, 'Short n Sweet - covers.png')
+background_image = pg.image.load(background_image_path)
 background_image = pg.transform.scale(background_image, (c.SCREEN_WIDTH_Start, c.SCREEN_HEIGHT_Start))
 
 # Create screen
 screen = pg.display.set_mode((c.SCREEN_WIDTH_Start, c.SCREEN_HEIGHT_Start))
 pg.display.set_caption("Tower Defence - Start Menu")
-
 
 # Button class
 class Button:
@@ -36,13 +48,8 @@ class Button:
     def draw(self, surface):
         # Set button color based on whether it has a setting
         if self.setting is not None:
-            # Button with a setting (changes color based on setting)
-            if self.setting:
-                button_color = GREEN  # On (True)
-            else:
-                button_color = RED  # Off (False)
+            button_color = GREEN if self.setting else RED
         else:
-            # Button without a setting (defaults to gray)
             button_color = GRAY
 
         pg.draw.rect(surface, button_color, self.rect, border_radius=10)
@@ -54,49 +61,240 @@ class Button:
         return self.rect.collidepoint(pos)
 
 
-# Actions
+# --- Modal Windows using customtkinter ---
+
+def sign_up_window():
+    win = ctk.CTk()  # Create a new Tk window for sign up
+    win.title("Sign Up")
+    win.geometry("400x500")
+
+    # Labels and Entry widgets for each field
+    label_title = ctk.CTkLabel(win, text="Sign Up", font=ctk.CTkFont(size=20, weight="bold"))
+    label_title.pack(pady=10)
+
+    label_first = ctk.CTkLabel(win, text="First Name:")
+    label_first.pack(pady=5)
+    entry_first = ctk.CTkEntry(win)
+    entry_first.pack(pady=5)
+
+    label_last = ctk.CTkLabel(win, text="Last Name:")
+    label_last.pack(pady=5)
+    entry_last = ctk.CTkEntry(win)
+    entry_last.pack(pady=5)
+
+    label_age = ctk.CTkLabel(win, text="Age:")
+    label_age.pack(pady=5)
+    entry_age = ctk.CTkEntry(win)
+    entry_age.pack(pady=5)
+
+    label_phone = ctk.CTkLabel(win, text="Phone Number (10 digits):")
+    label_phone.pack(pady=5)
+    entry_phone = ctk.CTkEntry(win)
+    entry_phone.pack(pady=5)
+
+    label_email = ctk.CTkLabel(win, text="Email:")
+    label_email.pack(pady=5)
+    entry_email = ctk.CTkEntry(win)
+    entry_email.pack(pady=5)
+
+    label_password = ctk.CTkLabel(win, text="Password:")
+    label_password.pack(pady=5)
+    entry_password = ctk.CTkEntry(win, show="*")
+    entry_password.pack(pady=5)
+
+    def submit_signup():
+        first = entry_first.get().strip()
+        last = entry_last.get().strip()
+        age = entry_age.get().strip()
+        phone = entry_phone.get().strip()
+        email = entry_email.get().strip()
+        password = entry_password.get().strip()
+
+        # Validate first and last names (letters only)
+        if not re.fullmatch(r"[A-Za-z]+", first):
+            messagebox.showerror("Error", "First name must contain letters only.")
+            return
+        if not re.fullmatch(r"[A-Za-z]+", last):
+            messagebox.showerror("Error", "Last name must contain letters only.")
+            return
+        # Validate age as a positive integer
+        try:
+            age_int = int(age)
+            if age_int <= 0:
+                messagebox.showerror("Error", "Age must be a positive integer.")
+                return
+        except ValueError:
+            messagebox.showerror("Error", "Age must be a positive integer.")
+            return
+        # Validate phone number (exactly 10 digits)
+        if not re.fullmatch(r"\d{10}", phone):
+            messagebox.showerror("Error", "Phone number must be exactly 10 digits.")
+            return
+        # Validate email format
+        if not re.fullmatch(r"[\w\.-]+@[\w\.-]+\.\w+", email):
+            messagebox.showerror("Error", "Invalid email format.")
+            return
+        # Validate password (at least one uppercase, one lowercase, minimum 8 characters)
+        if not re.fullmatch(r"(?=.*[a-z])(?=.*[A-Z]).{8,}", password):
+            messagebox.showerror("Error", "Password must have at least one uppercase letter, one lowercase letter, and be at least 8 characters long.")
+            return
+
+        # Check if email is already registered
+        conn = get_db_connection()
+        if conn is None:
+            messagebox.showerror("Error", "Database connection error.")
+            return
+        cur = conn.cursor()
+        cur.execute("SELECT COUNT(*) FROM users WHERE email = %s", (email,))
+        if cur.fetchone()[0] > 0:
+            messagebox.showerror("Error", "Email is already registered.")
+            cur.close()
+            conn.close()
+            return
+
+        # Insert the new user into the database
+        try:
+            cur.execute(
+                "INSERT INTO users (first_name, last_name, age, phone_number, email, password) VALUES (%s, %s, %s, %s, %s, %s)",
+                (first, last, age_int, phone, email, password)
+            )
+            conn.commit()
+            messagebox.showinfo("Success", "Sign up successful!")
+            win.destroy()
+        except Error as e:
+            messagebox.showerror("Error", f"Database error: {e}")
+        finally:
+            cur.close()
+            conn.close()
+
+    submit_button = ctk.CTkButton(win, text="Submit", command=submit_signup)
+    submit_button.pack(pady=20)
+
+    win.mainloop()
+
+
+def log_in_window():
+    win = ctk.CTk()
+    win.title("Log In")
+    win.geometry("350x250")
+
+    label_title = ctk.CTkLabel(win, text="Log In", font=ctk.CTkFont(size=20, weight="bold"))
+    label_title.pack(pady=10)
+
+    label_email = ctk.CTkLabel(win, text="Email:")
+    label_email.pack(pady=5)
+    entry_email = ctk.CTkEntry(win)
+    entry_email.pack(pady=5)
+
+    label_password = ctk.CTkLabel(win, text="Password:")
+    label_password.pack(pady=5)
+    entry_password = ctk.CTkEntry(win, show="*")
+    entry_password.pack(pady=5)
+
+    def submit_login():
+        email = entry_email.get().strip()
+        password = entry_password.get().strip()
+
+        if not email or not password:
+            messagebox.showerror("Error", "Please fill in all fields.")
+            return
+
+        conn = get_db_connection()
+        if conn is None:
+            messagebox.showerror("Error", "Database connection error.")
+            return
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM users WHERE email = %s AND password = %s", (email, password))
+        user = cur.fetchone()
+        cur.close()
+        conn.close()
+        if user:
+            messagebox.showinfo("Success", "Log in successful!")
+            win.destroy()
+        else:
+            messagebox.showerror("Error", "Incorrect email or password.")
+
+    submit_button = ctk.CTkButton(win, text="Log In", command=submit_login)
+    submit_button.pack(pady=20)
+
+    win.mainloop()
+
+
+def display_users_window():
+    win = ctk.CTk()
+    win.title("Registered Users")
+    win.geometry("700x400")
+
+    # Connect to database and fetch all users (excluding password)
+    conn = get_db_connection()
+    if conn is None:
+        messagebox.showerror("Error", "Database connection error.")
+        return
+    cur = conn.cursor()
+    cur.execute("SELECT id, first_name, last_name, age, phone_number, email FROM users")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+
+    # Create a frame to hold the treeview
+    frame = ctk.CTkFrame(win)
+    frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+    # Create a Treeview widget (using ttk)
+    tree = ttk.Treeview(frame, columns=("ID", "First Name", "Last Name", "Age", "Phone", "Email"), show="headings")
+    tree.heading("ID", text="ID")
+    tree.heading("First Name", text="First Name")
+    tree.heading("Last Name", text="Last Name")
+    tree.heading("Age", text="Age")
+    tree.heading("Phone", text="Phone")
+    tree.heading("Email", text="Email")
+
+    # Insert data into the treeview
+    for row in rows:
+        tree.insert("", "end", values=row)
+
+    # Add a scrollbar
+    scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
+    tree.configure(yscroll=scrollbar.set)
+    scrollbar.pack(side="right", fill="y")
+    tree.pack(fill="both", expand=True)
+
+    win.mainloop()
+
+
+# --- Actions for Pygame Menu ---
+
 def start_game():
     print("Starting game...")
-
     pg.quit()  # Close the start menu before launching the game
 
-    # Change working directory to the correct location before running main.py
-    game_dir = r"C:\Programming\ProgrammingOrt\Python\CompileAndConquer"
-    os.chdir(game_dir)  # Change directory to where main.py is located
-
-    # Run main.py from the correct directory
-    subprocess.run(["python", "main.py"], shell=True)
-
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    game_dir = os.path.join(script_dir, '..')
+    os.chdir(game_dir)
+    print(f"Current working directory: {os.getcwd()}")
+    print(f"Contents of the directory: {os.listdir(game_dir)}")
+    python_executable = sys.executable
+    result = subprocess.run([python_executable, "main.py"], shell=True)
+    if result.returncode != 0:
+        print(f"Failed to start main.py. Return code: {result.returncode}")
+    else:
+        print("main.py started successfully")
     sys.exit()
-
 
 def choose_difficulty():
     print("Choosing difficulty...")
     difficulty_menu()
 
-
-def open_settings():
-    print("Opening settings...")
-    # Implement settings screen logic
-
-
-def exit_game():
-    pg.quit()
-    sys.exit()
-
-
 def open_settings():
     settings_menu()
 
-
 def exit_game():
+    close_database()  # Close all idle database connections
     pg.quit()
     sys.exit()
 
-
 def settings_menu():
     settings_running = c.settings_running
-
     mute_music = c.mute_music
     auto_start = c.auto_start
     sabrina_mode = c.sabrina_mode
@@ -112,7 +310,7 @@ def settings_menu():
         nonlocal mute_music, auto_start, sabrina_mode
         if setting == "mute":
             mute_music = not mute_music
-            c.MUTE_MUSIC = mute_music  # Update the constant in constants.py
+            c.MUTE_MUSIC = mute_music
             print(f"Mute Music: {mute_music}")
         elif setting == "auto_start":
             auto_start = not auto_start
@@ -137,28 +335,21 @@ def settings_menu():
                     if button.is_clicked(event.pos):
                         button.action()
 
-        # Update buttons to reflect changes in settings
         mute_button.setting = mute_music
         auto_start_button.setting = auto_start
         sabrina_mode_button.setting = sabrina_mode
 
-        # Draw buttons
         for button in buttons:
             button.draw(screen)
 
         pg.display.flip()
 
-
 def difficulty_menu():
-    # Start difficulty screen
     difficulty_running = True
-
-    # Current selected difficulty
     easy_selected = c.DIFFICULTY == 'Easy'
     medium_selected = c.DIFFICULTY == 'Medium'
     hard_selected = c.DIFFICULTY == 'Hard'
 
-    # Buttons for each difficulty
     easy_button = Button("Easy", 300, 200, 200, 50, lambda: select_difficulty('Easy'), easy_selected)
     medium_button = Button("Medium", 300, 270, 200, 50, lambda: select_difficulty('Medium'), medium_selected)
     hard_button = Button("Hard", 300, 340, 200, 50, lambda: select_difficulty('Hard'), hard_selected)
@@ -188,30 +379,28 @@ def difficulty_menu():
                     if button.is_clicked(event.pos):
                         button.action()
 
-        # Update button states
         easy_button.setting = easy_selected
         medium_button.setting = medium_selected
         hard_button.setting = hard_selected
 
-        # Draw buttons
         for button in buttons:
             button.draw(screen)
 
         pg.display.flip()
 
 
-
-# Create buttons
+# --- Main Menu Buttons ---
 buttons = [
     Button("Start Game", 300, 150, 200, 50, start_game),
     Button("Choose Difficulty", 300, 220, 200, 50, choose_difficulty),
     Button("Settings", 300, 290, 200, 50, open_settings),
-    Button("Log In", 300, 360, 200, 50, lambda: print("Log In Clicked")),
-    Button("Sign Up", 300, 430, 200, 50, lambda: print("Sign Up Clicked")),
-    Button("Exit", 300, 500, 200, 50, exit_game)
+    Button("Log In", 300, 360, 200, 50, log_in_window),
+    Button("Sign Up", 300, 430, 200, 50, sign_up_window),
+    Button("Display Users", 300, 500, 200, 50, display_users_window),
+    Button("Exit", 300, 570, 200, 50, exit_game)
 ]
 
-# Main loop
+# --- Pygame Main Loop ---
 running = True
 while running:
     screen.blit(background_image, (0, 0))
@@ -229,4 +418,4 @@ while running:
 
     pg.display.flip()
 
-pg.quit()
+exit_game()

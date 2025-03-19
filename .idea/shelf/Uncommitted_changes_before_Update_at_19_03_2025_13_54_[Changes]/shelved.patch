@@ -1,0 +1,136 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7b760314-79ca-475b-b123-64d47418932c\" name=\"Changes\" comment=\"synced project with other files\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/discord.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/settings_menu.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/CompileAndConquer.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/CompileAndConquer.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/towers/Towers.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/towers/Towers.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/towers/turret.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/towers/turret.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;ilay030106&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/ilay030106/CompileAndConquer.git\",\r\n    \"accountId\": \"3b614e45-d83c-43fb-b294-f2e5e69255ff\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2sqhsLnOFfuCzwYPNUGGLiiblko\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Python.enemy.executor\": \"Run\",\r\n    \"Python.main.executor\": \"Run\",\r\n    \"Python.settings_menu.executor\": \"Run\",\r\n    \"Python.turret.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"last_opened_file_path\": \"C:/Users/ILAY_N/Downloads/tower_defence_tut-main-20250227T065323Z-001/tower_defence_tut-main\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Programming\\ProgrammingOrt\\Python\\CompileAndConquer\\towers\" />\r\n      <recent name=\"C:\\Programming\\ProgrammingOrt\\Python\\CompileAndConquer\\enemy\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220\" />\r\n        <option value=\"bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7b760314-79ca-475b-b123-64d47418932c\" name=\"Changes\" comment=\"\" />\r\n      <created>1739189219117</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1739189219117</updated>\r\n      <workItem from=\"1739189219930\" duration=\"2411000\" />\r\n      <workItem from=\"1740398936442\" duration=\"3170000\" />\r\n      <workItem from=\"1740639262798\" duration=\"861000\" />\r\n      <workItem from=\"1740640154788\" duration=\"295000\" />\r\n      <workItem from=\"1741799820696\" duration=\"3543000\" />\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00003\" summary=\"Started working on the Projectiles.py module, need to add more towers and more Projectiles.py\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740401700343</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1740401700343</updated>\r\n    </task>\r\n    <task id=\"LOCAL\u200E-00004\" summary=\"synced project with other files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1740639484192</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL\u200E-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\u200E\" />\r\n      <updated>1740639484192</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"started to create the towers file\" />\r\n    <MESSAGE value=\"Started working on the Projectiles.py module, need to add more towers and more Projectiles.py\" />\r\n    <MESSAGE value=\"synced project with other files\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"synced project with other files\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/CompileAndConquer$enemy.coverage\" NAME=\"enemy Coverage Results\" MODIFIED=\"1740640120327\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/enemy\" />\r\n    <SUITE FILE_PATH=\"coverage/CompileAndConquer$settings_menu.coverage\" NAME=\"settings_menu Coverage Results\" MODIFIED=\"1741803005207\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/CompileAndConquer$main.coverage\" NAME=\"main Coverage Results\" MODIFIED=\"1741803415502\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$\" />\r\n    <SUITE FILE_PATH=\"coverage/CompileAndConquer$turret.coverage\" NAME=\"turret Coverage Results\" MODIFIED=\"1740639889666\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/towers\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 88f30840556c430fcd3f7b1b174b03587a02e411)
++++ b/.idea/workspace.xml	(date 1742322810416)
+@@ -4,15 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7b760314-79ca-475b-b123-64d47418932c" name="Changes" comment="synced project with other files">
+-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/settings_menu.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/CompileAndConquer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CompileAndConquer.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++    <list default="true" id="7b760314-79ca-475b-b123-64d47418932c" name="Changes" comment="refactor: update game logic and add settings menu functionality">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/towers/Towers.py" beforeDir="false" afterPath="$PROJECT_DIR$/towers/Towers.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/towers/turret.py" beforeDir="false" afterPath="$PROJECT_DIR$/towers/turret.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -35,12 +28,12 @@
+     &quot;assignee&quot;: &quot;ilay030106&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/ilay030106/CompileAndConquer.git",
+-    "accountId": "3b614e45-d83c-43fb-b294-f2e5e69255ff"
+-  }
+-}]]></component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/ilay030106/CompileAndConquer.git&quot;,
++    &quot;accountId&quot;: &quot;3b614e45-d83c-43fb-b294-f2e5e69255ff&quot;
++  }
++}</component>
+   <component name="ProblemsViewState">
+     <option name="selectedTabId" value="CurrentFile" />
+   </component>
+@@ -53,26 +46,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Python.enemy.executor": "Run",
+-    "Python.main.executor": "Run",
+-    "Python.settings_menu.executor": "Run",
+-    "Python.turret.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "master",
+-    "last_opened_file_path": "C:/Users/ILAY_N/Downloads/tower_defence_tut-main-20250227T065323Z-001/tower_defence_tut-main",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Python.enemy.executor&quot;: &quot;Run&quot;,
++    &quot;Python.main.executor&quot;: &quot;Run&quot;,
++    &quot;Python.settings_menu.executor&quot;: &quot;Run&quot;,
++    &quot;Python.turret.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/ILAY_N/Downloads/tower_defence_tut-main-20250227T065323Z-001/tower_defence_tut-main&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Programming\ProgrammingOrt\Python\CompileAndConquer\towers" />
+@@ -99,7 +92,8 @@
+       <workItem from="1740398936442" duration="3170000" />
+       <workItem from="1740639262798" duration="861000" />
+       <workItem from="1740640154788" duration="295000" />
+-      <workItem from="1741799820696" duration="3543000" />
++      <workItem from="1741799820696" duration="3949000" />
++      <workItem from="1742322084807" duration="714000" />
+     </task>
+     <task id="LOCAL‎-00003" summary="Started working on the Projectiles.py module, need to add more towers and more Projectiles.py">
+       <option name="closed" value="true" />
+@@ -117,7 +111,15 @@
+       <option name="project" value="LOCAL‎" />
+       <updated>1740639484192</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL‎-00005" summary="refactor: update game logic and add settings menu functionality">
++      <option name="closed" value="true" />
++      <created>1741803771988</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL‎-00005" />
++      <option name="project" value="LOCAL‎" />
++      <updated>1741803771988</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -127,12 +129,13 @@
+     <MESSAGE value="started to create the towers file" />
+     <MESSAGE value="Started working on the Projectiles.py module, need to add more towers and more Projectiles.py" />
+     <MESSAGE value="synced project with other files" />
+-    <option name="LAST_COMMIT_MESSAGE" value="synced project with other files" />
++    <MESSAGE value="refactor: update game logic and add settings menu functionality" />
++    <option name="LAST_COMMIT_MESSAGE" value="refactor: update game logic and add settings menu functionality" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/CompileAndConquer$enemy.coverage" NAME="enemy Coverage Results" MODIFIED="1740640120327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enemy" />
+     <SUITE FILE_PATH="coverage/CompileAndConquer$settings_menu.coverage" NAME="settings_menu Coverage Results" MODIFIED="1741803005207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+-    <SUITE FILE_PATH="coverage/CompileAndConquer$main.coverage" NAME="main Coverage Results" MODIFIED="1741803415502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
++    <SUITE FILE_PATH="coverage/CompileAndConquer$main.coverage" NAME="main Coverage Results" MODIFIED="1741803554220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+     <SUITE FILE_PATH="coverage/CompileAndConquer$turret.coverage" NAME="turret Coverage Results" MODIFIED="1740639889666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/towers" />
+   </component>
+ </project>
+\ No newline at end of file
