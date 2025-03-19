@@ -63,6 +63,7 @@ def initialize_database():
                 date DATE NOT NULL,
                 money_spent INT NOT NULL,
                 lives_amount INT NOT NULL,
+                difficulty VARCHAR(20) NOT NULL,
                 PRIMARY KEY (history_id),
                 FOREIGN KEY (user_id) REFERENCES users(id)
                     ON DELETE CASCADE
