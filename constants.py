@@ -6,18 +6,42 @@ SCREEN_WIDTH = TILE_SIZE * COLS
 SCREEN_HEIGHT = TILE_SIZE * ROWS
 FPS = 60
 HEALTH = 100
-MONEY = 650
+MONEY = 850
 TOTAL_LEVELS = 15
 
-#enemy constants
+# enemy constants
 SPAWN_COOLDOWN = 400
 
-#turret constants
+# turret constants
 TURRET_LEVELS = 4
-BUY_COST = 200
+BUY_COST = 190
 UPGRADE_COST = 100
 KILL_REWARD = 1
 LEVEL_COMPLETE_REWARD = 100
 ANIMATION_STEPS = 8
 ANIMATION_DELAY = 15
-DAMAGE = 5
+DAMAGE = 1
+
+# Settings menu
+SETTINGS_WIDTH = 400
+SETTINGS_HEIGHT = 500
+VOLUME_INCREMENT = 0.1
+
+# Start menu
+SCREEN_WIDTH_Start = 1400
+SCREEN_HEIGHT_Start = 1000
+
+settings_running = True
+mute_music = False
+auto_start = False
+sabrina_mode = False
+
+# Colors:
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+GRAY = (100, 100, 100)
+
+# difficulty:
+DIFFICULTY = 'Medium'  # Default difficulty
