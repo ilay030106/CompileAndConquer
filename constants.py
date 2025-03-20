@@ -45,3 +45,6 @@ GRAY = (100, 100, 100)
 
 # difficulty:
 DIFFICULTY = 'Medium'  # Default difficulty
+
+# PROJECTILES:
+PROJECTILE_SPEED = 8

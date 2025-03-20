@@ -6,6 +6,7 @@ import sys
 import os
 import subprocess
 import re
+import json
 
 # Import tkinter and customtkinter for modal forms.
 import tkinter as tk
@@ -25,6 +26,11 @@ GRAY = c.GRAY
 GREEN = c.GREEN
 RED = c.RED
 FONT = pg.font.Font(None, 36)
+
+button_width = 200
+button_height = 50
+screen_width = c.SCREEN_WIDTH_Start
+screen_height = c.SCREEN_HEIGHT_Start
 
 # Load background image
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -62,6 +68,22 @@ class Button:
 
 
 # --- Modal Windows using customtkinter ---
+
+def get_config_path():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(script_dir, 'config.json')
+
+def save_settings():
+    config = {
+        'mute_music': c.mute_music,
+        'auto_start': c.auto_start,
+        'sabrina_mode': c.sabrina_mode,
+        'difficulty': c.DIFFICULTY
+    }
+    config_path = get_config_path()
+    with open(config_path, 'w') as f:
+        json.dump(config, f)
+
 
 def sign_up_window():
     win = ctk.CTk()  # Create a new Tk window for sign up
@@ -274,7 +296,16 @@ def start_game():
     print(f"Current working directory: {os.getcwd()}")
     print(f"Contents of the directory: {os.listdir(game_dir)}")
     python_executable = sys.executable
-    result = subprocess.run([python_executable, "main.py"], shell=True)
+
+    args = [
+        python_executable,
+        "main.py",
+        "--mute_music", str(c.mute_music).lower(),
+        "--auto_start", str(c.auto_start).lower(),
+        "--sabrina_mode", str(c.sabrina_mode).lower(),
+    ]
+
+    result = subprocess.run(args, shell=False)
     if result.returncode != 0:
         print(f"Failed to start main.py. Return code: {result.returncode}")
     else:
@@ -310,7 +341,7 @@ def settings_menu():
         nonlocal mute_music, auto_start, sabrina_mode
         if setting == "mute":
             mute_music = not mute_music
-            c.MUTE_MUSIC = mute_music
+            c.mute_music = mute_music
             print(f"Mute Music: {mute_music}")
         elif setting == "auto_start":
             auto_start = not auto_start
@@ -320,6 +351,7 @@ def settings_menu():
             sabrina_mode = not sabrina_mode
             c.sabrina_mode = sabrina_mode
             print(f"Sabrina Mode: {sabrina_mode}")
+        save_settings()  # Save after each toggle
 
     def close_settings():
         nonlocal settings_running
@@ -364,6 +396,7 @@ def difficulty_menu():
         medium_selected = difficulty == 'Medium'
         hard_selected = difficulty == 'Hard'
         print(f"Difficulty set to: {difficulty}")
+        save_settings()  # Save after changing difficulty
 
     def close_difficulty():
         nonlocal difficulty_running
@@ -389,15 +422,17 @@ def difficulty_menu():
         pg.display.flip()
 
 
-# --- Main Menu Buttons ---
+# Calculate the starting Y position so that the buttons are centered vertically
+start_y = (screen_height - (7 * (button_height + 20))) // 2  # Adjust for spacing
+
 buttons = [
-    Button("Start Game", 300, 150, 200, 50, start_game),
-    Button("Choose Difficulty", 300, 220, 200, 50, choose_difficulty),
-    Button("Settings", 300, 290, 200, 50, open_settings),
-    Button("Log In", 300, 360, 200, 50, log_in_window),
-    Button("Sign Up", 300, 430, 200, 50, sign_up_window),
-    Button("Display Users", 300, 500, 200, 50, display_users_window),
-    Button("Exit", 300, 570, 200, 50, exit_game)
+    Button("Start Game", (screen_width - button_width) // 2, start_y, button_width, button_height, start_game),
+    Button("Choose Difficulty", (screen_width - button_width) // 2, start_y + (button_height + 20), button_width, button_height, choose_difficulty),
+    Button("Settings", (screen_width - button_width) // 2, start_y + 2 * (button_height + 20), button_width, button_height, open_settings),
+    Button("Log In", (screen_width - button_width) // 2, start_y + 3 * (button_height + 20), button_width, button_height, log_in_window),
+    Button("Sign Up", (screen_width - button_width) // 2, start_y + 4 * (button_height + 20), button_width, button_height, sign_up_window),
+    Button("Display Users", (screen_width - button_width) // 2, start_y + 5 * (button_height + 20), button_width, button_height, display_users_window),
+    Button("Exit", (screen_width - button_width) // 2, start_y + 6 * (button_height + 20), button_width, button_height, exit_game)
 ]
 
 # --- Pygame Main Loop ---

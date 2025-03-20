@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b760314-79ca-475b-b123-64d47418932c" name="Changes" comment="feat: implement user authentication and database integration in start menu">
-      <change beforePath="$PROJECT_DIR$/db_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_connection.py" afterDir="false" />
+    <list default="true" id="7b760314-79ca-475b-b123-64d47418932c" name="Changes" comment="feat: add difficulty column to game history in database">
+      <change afterPath="$PROJECT_DIR$/Face_ID.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Menus/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menus/start_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/Menus/start_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/enemy/enemy_upgrade_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy/enemy_upgrade_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/towers/Projectiles.py" beforeDir="false" afterPath="$PROJECT_DIR$/towers/Projectiles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/towers/turret.py" beforeDir="false" afterPath="$PROJECT_DIR$/towers/turret.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +66,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/O/PycharmProjects/CompileAndConquer/db_connection.py",
+    "last_opened_file_path": "C:/Users/O/Downloads/CompileAndConquer-master-20250320T234359Z-001/CompileAndConquer-master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,6 +83,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\O\PycharmProjects\CompileAndConquer" />
+      <recent name="C:\Users\O\PycharmProjects\CompileAndConquer\Menus" />
+      <recent name="C:\Users\O\PycharmProjects\CompileAndConquer\assets\audio" />
       <recent name="C:\Programming\ProgrammingOrt\Python\CompileAndConquer\towers" />
       <recent name="C:\Programming\ProgrammingOrt\Python\CompileAndConquer\enemy" />
     </key>
@@ -99,6 +111,7 @@
       <workItem from="1740639262798" duration="861000" />
       <workItem from="1740640154788" duration="295000" />
       <workItem from="1741799820696" duration="3543000" />
+      <workItem from="1742514190134" duration="656000" />
     </task>
     <task id="LOCAL‎-00003" summary="Started working on the Projectiles.py module, need to add more towers and more Projectiles.py">
       <option name="closed" value="true" />
@@ -124,7 +137,15 @@
       <option name="project" value="LOCAL‎" />
       <updated>1742389354529</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL‎-00006" summary="feat: add difficulty column to game history in database">
+      <option name="closed" value="true" />
+      <created>1742389547831</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL‎-00006" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1742389547831</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +156,8 @@
     <MESSAGE value="Started working on the Projectiles.py module, need to add more towers and more Projectiles.py" />
     <MESSAGE value="synced project with other files" />
     <MESSAGE value="feat: implement user authentication and database integration in start menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implement user authentication and database integration in start menu" />
+    <MESSAGE value="feat: add difficulty column to game history in database" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add difficulty column to game history in database" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CompileAndConquer$enemy.coverage" NAME="enemy Coverage Results" MODIFIED="1740640120327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/enemy" />

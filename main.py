@@ -11,8 +11,45 @@ from towers.turret_upgrades_data import TURRET_DATA
 from button import Button
 import constants as c
 from Menus.Settings_menu import SettingsMenu
+import matplotlib.pyplot as plt
+import numpy as np  # for the heat map
+import argparse
 
 pg.init()
+
+try:
+    with open('config.json', 'r') as f:
+        config = json.load(f)
+        c.mute_music = config.get('mute_music', c.mute_music)
+        c.auto_start = config.get('auto_start', c.auto_start)
+        c.sabrina_mode = config.get('sabrina_mode', c.sabrina_mode)
+        c.DIFFICULTY = config.get('difficulty', c.DIFFICULTY)
+except FileNotFoundError:
+        c.mute_music = False
+        c.auto_start = False
+        c.sabrina_mode = False
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--mute_music", type=str, default="false")
+parser.add_argument("--auto_start", type=str, default="false")
+parser.add_argument("--sabrina_mode", type=str, default="false")
+args = parser.parse_args()
+
+# Convert string values to booleans
+c.mute_music = args.mute_music.lower() == "true"
+c.auto_start = args.auto_start.lower() == "true"
+c.sabrina_mode = args.sabrina_mode.lower() == "true"
+
+print(c.sabrina_mode, c.auto_start, c.mute_music)
+
+# -------------------------------
+total_money_earned = c.MONEY  # starting money
+tower_kills = {"Type1": 0, "Type2": 0, "Type3": 0}
+
+money_history = []
+enemy_kills_history = []
+data_update_interval = 1000  # in milliseconds
+last_data_update = pg.time.get_ticks()
 
 # Create clock and game window
 clock = pg.time.Clock()
@@ -25,6 +62,17 @@ settings_button_image = pg.transform.scale(settings_button_image, (40, 40))  # S
 # Place it on the side panel near other buttons (for example, top left of side panel)
 settings_button = Button(c.SCREEN_WIDTH + 10, 10, settings_button_image, True)
 
+# CHANGE THIS PIC LATER !!!
+# Sell Button (to remove a turret and refund money)
+sell_button_image = pg.image.load('assets/images/Settings/Settings.jpg').convert_alpha()
+sell_button_image = pg.transform.scale(sell_button_image, (40, 40))
+sell_button = Button(c.SCREEN_WIDTH + 5, 230, sell_button_image, True)
+
+# Analytics Button (to display Matplotlib analytics)
+analytics_button_image = pg.image.load('assets/images/Settings/Settings.jpg').convert_alpha()
+analytics_button_image = pg.transform.scale(analytics_button_image, (40, 40))
+analytics_button = Button(c.SCREEN_WIDTH + c.SIDE_PANEL - 50, 10, analytics_button_image, True)
+
 # Game variables
 game_over = False
 game_outcome = 0  # -1 for loss, 1 for win
@@ -36,7 +84,7 @@ cursor_range = None
 fast_forward = False
 insufficient_message = None
 paused = False  # Indicates if the game is paused
-auto_start = False
+auto_start = c.auto_start
 
 # Load images
 map_image = pg.image.load('levels/level.png').convert_alpha()
@@ -71,10 +119,60 @@ with open('levels/level.tmj') as file:
 text_font = pg.font.Font(None, 24)
 large_font = pg.font.Font(None, 36)
 
+# Music setup
+if c.mute_music:
+    if c.sabrina_mode:
+        pg.mixer.music.load('assets/audio/Sabrina_Music/sabrina carpenter edit audios cause you wrote a pop hit  (timestamps).mp3')  # Your Sabrina song
+    else:
+        pg.mixer.music.load('assets/audio/Sabrina_Music/sabrina carpenter edit audios cause you wrote a pop hit  (timestamps).mp3')  # Default music
+
+    pg.mixer.music.play(-1)  # Loop indefinitely
+    pg.mixer.music.set_volume(0.0 if c.mute_music else 0.5)
+else:
+    shot_fx.set_volume(0)
+
+
+# Analytics Function using Matplotlib
+def show_analytics():
+    # Use the historical data for the graphs:
+    if not money_history or not enemy_kills_history:
+        print("Not enough data to display analytics yet.")
+        return
+
+    # Create a figure with three subplots
+    fig, axs = plt.subplots(1, 3, figsize=(15, 4))
+    fig.suptitle("Game Analytics", fontsize=16)
+
+    # Graph: Money earned vs. Enemies killed over time
+    axs[0].plot(enemy_kills_history, money_history, marker="o")
+    axs[0].set_title("Money Earned vs. Enemies Killed")
+    axs[0].set_xlabel("Enemies Killed")
+    axs[0].set_ylabel("Money Earned")
+
+    # Heat Map: Characters (dummy data) vs. Area
+    # Replace this dummy data with your own if available.
+    data = np.random.randint(0, 20, (10, 10))
+    cax = axs[1].imshow(data, cmap='hot', interpolation='nearest')
+    axs[1].set_title("Heat Map of Characters")
+    fig.colorbar(cax, ax=axs[1])
+
+    # Pie Chart: Kills per tower type
+    labels = list(tower_kills.keys())
+    sizes = list(tower_kills.values())
+    if sum(sizes) == 0:
+        sizes = [1 for _ in labels]  # Avoid division by zero
+    axs[2].pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+    axs[2].set_title("Kills per Tower Type")
+
+    plt.tight_layout()
+    plt.show()
+
+
 # Function to render text on the screen
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
+
 
 # Function to display the side panel data
 def display_data():
@@ -86,6 +184,7 @@ def display_data():
     draw_text(str(world.health), text_font, "grey100", c.SCREEN_WIDTH + 50, 40)
     screen.blit(coin_image, (c.SCREEN_WIDTH + 10, 65))
     draw_text(str(world.money), text_font, "grey100", c.SCREEN_WIDTH + 50, 70)
+
 
 # Create turret at a valid mouse position
 def create_turret(mouse_pos):
@@ -101,6 +200,10 @@ def create_turret(mouse_pos):
             new_turret = Turret(turret_spritesheets, mouse_tile_x, mouse_tile_y, shot_fx)
             turret_group.add(new_turret)
             world.money -= c.BUY_COST
+            # Update total money earned if you treat spending as an "investment"
+            global total_money_earned
+            total_money_earned -= c.BUY_COST
+
 
 def select_turret(mouse_pos):
     mouse_tile_x = mouse_pos[0] // c.TILE_SIZE
@@ -109,9 +212,11 @@ def select_turret(mouse_pos):
         if (mouse_tile_x, mouse_tile_y) == (turret.tile_x, turret.tile_y):
             return turret
 
+
 def clear_selection():
     for turret in turret_group:
         turret.selected = False
+
 
 def trigger_insufficient_funds_message(duration=1000):
     global insufficient_message
@@ -124,6 +229,7 @@ def trigger_insufficient_funds_message(duration=1000):
         "pos": (pos_x, pos_y)
     }
 
+
 # Grayscale blur effect for paused state (requires NumPy)
 def apply_grayscale_blur(surface):
     grayscale_surface = pg.Surface(surface.get_size())
@@ -131,14 +237,17 @@ def apply_grayscale_blur(surface):
     grayscale_array = pg.surfarray.pixels3d(grayscale_surface)
     grayscale_array[:, :, :] = grayscale_array.mean(axis=2, keepdims=True)
     del grayscale_array
-    grayscale_surface = pg.transform.smoothscale(grayscale_surface, (surface.get_width() // 10, surface.get_height() // 10))
+    grayscale_surface = pg.transform.smoothscale(grayscale_surface,
+                                                 (surface.get_width() // 10, surface.get_height() // 10))
     grayscale_surface = pg.transform.smoothscale(grayscale_surface, surface.get_size())
     return grayscale_surface
+
 
 # Callback functions for the SettingsMenu
 def unpause_game():
     global paused
     paused = False
+
 
 def restart_game():
     global game_over, level_started, placing_turrets, selected_turret, last_enemy_spawn, world, enemy_group, turret_group, fast_forward, paused
@@ -156,13 +265,16 @@ def restart_game():
     enemy_group.empty()
     turret_group.empty()
 
+
 def exit_to_main_menu():
     global run
     run = False
 
+
 def toggle_auto_start():
     global auto_start
     auto_start = not auto_start
+
 
 # Function to open the modal settings menu and pause the game
 def open_settings_menu():
@@ -175,6 +287,7 @@ def open_settings_menu():
     pg.display.flip()
     settings_menu = SettingsMenu(unpause_game, restart_game, exit_to_main_menu, toggle_auto_start)
     settings_menu.show()
+
 
 # Create world and process it
 world = World(world_data, map_image)
@@ -231,11 +344,25 @@ while run:
             game_over = True
             game_outcome = 1
 
-        enemy_group.update(world)
+        # Update turrets first so damage is applied immediately.
         turret_group.update(enemy_group, world)
+        # Then update enemies to check for death.
+        enemy_group.update(world)
 
         if selected_turret:
             selected_turret.selected = True
+
+        if pg.mixer.music.get_volume() > 0 and c.mute_music:
+            pg.mixer.music.set_volume(0.0)
+        elif pg.mixer.music.get_volume() == 0 and not c.mute_music:
+            pg.mixer.music.set_volume(0.5)
+
+    # Update data history every 'data_update_interval' milliseconds
+    current_time = pg.time.get_ticks()
+    if current_time - last_data_update >= data_update_interval:
+        money_history.append(total_money_earned)  # or world.money if you prefer current money
+        enemy_kills_history.append(world.killed_enemies)
+        last_data_update = current_time
 
     #########################
     # DRAWING SECTION
@@ -250,8 +377,12 @@ while run:
     if settings_button.draw(screen):
         open_settings_menu()
 
+    # Draw the Analytics button and check for click
+    if analytics_button.draw(screen):
+        show_analytics()
+
     if not game_over:
-        if not level_started:
+        if not level_started and c.auto_start:
             if begin_button.draw(screen):
                 level_started = True
         else:
@@ -270,8 +401,9 @@ while run:
 
         if world.check_level_complete():
             world.money += c.LEVEL_COMPLETE_REWARD
+            total_money_earned += c.LEVEL_COMPLETE_REWARD
             world.level += 1
-            level_started = False
+            level_started = c.auto_start  # Auto-start next level if enabled
             last_enemy_spawn = pg.time.get_ticks()
             world.reset_level()
             world.process_enemies()
@@ -325,6 +457,16 @@ while run:
                         world.money -= c.UPGRADE_COST
                     else:
                         trigger_insufficient_funds_message()
+            # Sell Button: remove the turret and refund money (e.g., 80% of BUY_COST)
+            if sell_button.draw(screen):
+                refund_amount = c.BUY_COST * 0.8
+                world.money += refund_amount
+                total_money_earned += refund_amount  # update money earned if desired
+                # Optionally update tower_kills (if the turret had any kills)
+                turret_type = "Type" + str(selected_turret.upgrade_level)
+                tower_kills[turret_type] += selected_turret.kills
+                turret_group.remove(selected_turret)
+                selected_turret = None
     else:
         pg.draw.rect(screen, "dodgerblue", (200, 200, 400, 200), border_radius=30)
         if game_outcome == -1:

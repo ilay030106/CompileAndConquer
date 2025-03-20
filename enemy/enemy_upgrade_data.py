@@ -108,19 +108,19 @@ ENEMY_SPAWN_DATA = [
 
 ENEMY_DATA = {
     "weak": {
-    "health": 10,
+    "health": 1,
     "speed": 2
   },
     "medium": {
-    "health": 15,
+    "health": 2,
     "speed": 3
   },
     "strong": {
-    "health": 20,
+    "health": 4,
     "speed": 4
   },
     "elite": {
-    "health": 30,
+    "health": 5,
     "speed": 6
   }
 }
