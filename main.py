@@ -266,9 +266,54 @@ def restart_game():
     turret_group.empty()
 
 
+import os
+import sys
+import subprocess
+import pygame as pg
+
+
 def exit_to_main_menu():
     global run
     run = False
+    print("returning to main menu game...")
+    pg.quit()  # close the start menu before launching the game
+
+    # find the project root dynamically
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, '..', '..','PycharmProjects','CompileAndConquer'))  # Adjusted to locate CompileAndConquer
+
+    # ensure correct case sensitivity for Windows/Linux
+    menus_dir = os.path.join(project_root, 'Menus')
+    if not os.path.isdir(menus_dir):
+        print(f"Error: Menus directory not found at {menus_dir}")
+        sys.exit(1)
+
+    main_menu_script = os.path.join(menus_dir, 'start_menu.py')
+
+    if not os.path.isfile(main_menu_script):
+        print(f"Error: start_menu.py not found at {main_menu_script}")
+        sys.exit(1)
+
+    os.chdir(project_root)
+    print(f"current working directory: {os.getcwd()}")
+    print(f"contents of the directory: {os.listdir(project_root)}")
+    python_executable = sys.executable
+
+    args = [
+        python_executable,
+        main_menu_script,
+        "--mute_music", str(getattr(c, 'mute_music', False)).lower(),
+        "--auto_start", str(getattr(c, 'auto_start', False)).lower(),
+        "--sabrina_mode", str(getattr(c, 'sabrina_mode', False)).lower(),
+    ]
+
+    try:
+        result = subprocess.run(args, shell=False, check=True)
+        print("start_menu.py started successfully")
+    except subprocess.CalledProcessError as e:
+        print(f"failed to start start_menu.py return code: {e.returncode}")
+
+    sys.exit()
 
 
 def toggle_auto_start():
